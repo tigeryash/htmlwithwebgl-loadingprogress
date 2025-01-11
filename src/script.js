@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 /**
  * Loaders
  */
+let sceneReady = false;
 const loadingBarElement = document.querySelector(".loading-bar");
 const loadingManager = new THREE.LoadingManager(
   //loaded
@@ -15,6 +16,10 @@ const loadingManager = new THREE.LoadingManager(
       loadingBarElement.classList.add("ended");
       loadingBarElement.style.transform = ``;
     });
+
+    window.setTimeout(() => {
+      sceneReady = true;
+    }, 2000);
   },
   //progress
   (itemUrl, itemsLoaded, itemsTotal) => {
@@ -54,7 +59,7 @@ const overlayMaterial = new THREE.ShaderMaterial({
   uniform float uAlpha; 
 
     void main(){
-    gl_FragColor = vec4(.0, 0.0, 1.0, uAlpha);
+    gl_FragColor = vec4(.0, 0.0, .0, uAlpha);
 }`,
 });
 const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial);
@@ -213,7 +218,7 @@ const tick = () => {
         const pointDistance = point.position.distanceTo(camera.position); //distance between the point and the camera
 
         if (intersectionDistance < pointDistance) {
-          point.element.classList.remove("visble");
+          point.element.classList.remove("visible");
         } else {
           point.element.classList.add("visible");
         }
