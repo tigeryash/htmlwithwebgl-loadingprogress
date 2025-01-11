@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+.point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.point.visible .label {
+  transform: scale(1, 1);
+}
+
+.point .label {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: -20px;
+  top: -20px;
+  background: #00000077;
+  color: #fff;
+  border-radius: 50%;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  line-height: 40px;
+  font-weight: 100;
+  font-size: 14px;
+  cursor: help;
+  transform: scale(0, 0);
+  transition: transform 0.3s;
+}
+
+.point:hover .text {
+  opacity: 1;
+}
+
+.point .text {
+  position: absolute;
+  width: 200px;
+  left: -120px;
+  top: 30px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  background: #00000077;
+  color: #fff;
+  line-height: 1.3em;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
